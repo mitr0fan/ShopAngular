@@ -510,3 +510,6 @@ aside input {
 #zoom>img:hover {
     cursor: none;
 }
+*:active {
+    outline: none;
+}
