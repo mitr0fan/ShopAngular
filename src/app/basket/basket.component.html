@@ -1,0 +1,26 @@
+<div id="basket1" [hidden]="add.hideBasket">
+    <div id="goodsList">
+        <span>Корзина товаров</span>
+        <span id="close1" (click)="close()">✕</span>
+        <span id="buy" (click)="submit()">Купить</span>
+        <span id="clear" (click)="add.clear()">Очистить корзину</span>
+        <span id="fullPrice">Стоимость: <span id="fp">{{add.price}}</span></span>
+        <div *ngIf="add.bicycles.length==0" id="empty">Корзина пуста</div>
+        <div *ngIf="add.bicycles.length>0">
+            <div class="elem" *ngFor="let bicycle of add.bicycles" 
+            (click)="details(bicycle)">
+                <div class="route" (click)="details(bicycle)" (click)="hide()" routerLink="/details">
+                    <img src="{{bicycle.imageSrc}}">
+                    <span class="nameList">{{bicycle.name}}</span>
+                </div>
+                <div class="amount">
+                    <span #minus (click)="add.changeAmount(minus, amount)">-</span>
+                    <span class="amountList" #amount>{{1}}</span>
+                    <span #plus (click)="add.changeAmount(plus, amount)">+</span>
+                </div>
+                <span class="priceList">Цена: <span>{{bicycle.price}}</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+

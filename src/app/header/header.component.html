@@ -1,0 +1,21 @@
+<header>
+    <div id="forHeader">
+        <div id="logo"><img src="http://s1.iconbird.com/ico/2014/1/601/w512h5121390846971tricycle512.png" alt="Лого">
+        <div>Bicycle</div></div>
+        <div id="search">
+            <input type="text" #inp (input)="search(inp.value, div)">
+            <img src="https://img.icons8.com/metro/420/search.png" alt="Поиск">
+        </div>
+        <div id="basket" (click)="show()">
+            <div>Корзина товаров </div><span id="quantity">{{add.bicycles.length}}</span>
+            <img src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG46.png">
+        </div>
+        <div id="searchList" #div style="height: 0px">
+            <div class="divSearch" *ngFor="let elem of newArr" routerLink="/details"
+            (click)="click(elem, div)">
+                <img class="searchImg" src="{{elem.imageSrc}}">
+                <span class="searchName">{{elem.name}}</span>
+            </div>
+        </div>
+    </div>
+</header>

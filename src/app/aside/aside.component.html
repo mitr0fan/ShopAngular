@@ -1,0 +1,48 @@
+<aside>
+    <span id="nameAside">Фильтр по параметрам</span>
+    <div #item class="item" *ngFor="let param1 of p1; let i=index">
+        <div class="params" (click)="open(item)">{{param1}}<span class="up">⏷</span></div>
+        <div #checkDiv class="check" *ngFor="let param2 of p2[i]" 
+        (click)="check(checkDiv)"
+        (click)="amountOfBicycles($event, showBicycles)">
+            <div class="checkBox"></div>
+            <span>{{param2}}</span>
+        </div>
+        
+        <div *ngIf="param1==='Цена'">
+            <div class="inputs" cdkDropList>
+                <input [(ngModel)]="price.minPrice" type="text" id="minPrice" #min
+                (input)="check()"
+                (input)="amountOfBicycles($event, showBicycles)"
+                (click)="amountOfBicycles($event, showBicycles)"> - 
+                <input [(ngModel)]="price.maxPrice" type="text" id="maxPrice" #max 
+                (input)="check()"
+                (input)="amountOfBicycles($event, showBicycles)"
+                (click)="amountOfBicycles($event, showBicycles)">
+            </div>
+            <div id="priceLine">
+                <div id="line">
+                    <div id="point1" #p1 cdkDrag 
+                    cdkDragLockAxis="'x'"
+                    cdkDragBoundary="#line"
+                    (cdkDragMoved)="move($event, p1)"
+                    (cdkDragEnded)="check()"
+                    (mousedown)="amountOfBicycles($event, showBicycles)"
+                    >
+                    </div>
+                    <div id="point2" #p2 cdkDrag
+                    cdkDragLockAxis="'x'"
+                    cdkDragBoundary="#line"
+                    (cdkDragMoved)="move($event, p2)"
+                    (cdkDragEnded)="check()"
+                    (mousedown)="amountOfBicycles($event, showBicycles)"
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<span id="showBicycles" hidden="true" #showBicycles (click)="giveBicycles(showBicycles)">
+    Показать: {{bicycles.length}}
+</span>

@@ -1,0 +1,10 @@
+<app-aside [arrBicycles]="arrBicycles" (bicyclesOut)="getArr($event)"></app-aside>
+<div class="bicycle" *ngFor="let bicycle of bicycles">
+    <span class="name" (click)="currentBicycle(bicycle)" routerLink="/details">{{bicycle.name}}</span>
+    <img src="{{bicycle.imageSrc}}" class="photo" (click)="currentBicycle(bicycle)" routerLink="/details">
+    <span (click)="currentBicycle(bicycle)" routerLink="/details">{{bicycle.fullName}}</span>
+    <div class="cost" (click)="addToBasket(bicycle)" (click)="add.changeAmount()">
+        <span>Цена: {{bicycle.price}} руб</span>
+        <img src="https://img.icons8.com/dotty/420/add-basket.png" class="addToBasket">
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="popup" *ngIf="getBicycles.currentBicycle!=undefined">
+    <span id="close" routerLink="">← Назад</span>
+    <div id="name">{{getBicycles.currentBicycle.fullName}}</div>
+    <img src="{{getBicycles.currentBicycle.imageSrc}}" #bigImg id="bigImg" (mousemove)="zoom($event, img, bigImg, div)">
+    <div id="popupPrice" (click)="add.addToBasket(getBicycles.currentBicycle)" (click)="add.changeAmount()">
+        <span id="price">Цена: {{getBicycles.currentBicycle.price}} руб</span>
+        <img src="https://img.icons8.com/dotty/420/add-basket.png">
+    </div>
+    <div id="previous" #p (click)="changeBicycle(p)">
+        <div><img src="http://cliparts.co/cliparts/gTe/EqL/gTeEqL6Kc.png"></div>
+    </div>
+    <div id="next" #n (click)="changeBicycle(n)">
+        <div><img src="http://cliparts.co/cliparts/gTe/EqL/gTeEqL6Kc.png"></div>
+    </div>
+    <table id="spec">
+        <tbody>
+            <tr><th>Характеристика</th><th>Значение</th></tr>
+            <tr *ngFor="let item of arr"><td>{{item.name}}</td><td>{{item.property}}</td></tr>
+        </tbody>
+    </table>
+    <div id="zoom" #div >
+        <img src="{{this.getBicycles.currentBicycle.imageSrc}}" #img (mousemove)="zoom($event, img, bigImg, div)">
+    </div>
+</div>
+
+<div id="popup" *ngIf="getBicycles.currentBicycle==undefined">
+    <span id="close" routerLink="">← Назад</span>
+    <div id="name">Выберите велосипед</div>
+</div>
+
+
+
