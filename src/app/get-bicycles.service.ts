@@ -7,7 +7,7 @@ import { Bicycle } from '../app/bicycle';
   providedIn: 'root'
 })
 export class GetBicyclesService {
-  url='http://demo4164358.mockable.io/bicycles';
+  url='https://demo4164358.mockable.io/bicycles';
   constructor(public http : HttpClient) { }
 
   private request() :Observable<any> {

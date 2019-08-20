@@ -1,6 +1,6 @@
 <header>
     <div id="forHeader">
-        <div id="logo"><img src="http://s1.iconbird.com/ico/2014/1/601/w512h5121390846971tricycle512.png" alt="Лого">
+        <div id="logo"><img src="https://s1.iconbird.com/ico/2014/1/601/w512h5121390846971tricycle512.png" alt="Лого">
         <div>Bicycle</div></div>
         <div id="search">
             <input type="text" #inp (input)="search(inp.value, div)">
@@ -8,7 +8,7 @@
         </div>
         <div id="basket" (click)="show()">
             <div>Корзина товаров </div><span id="quantity">{{add.bicycles.length}}</span>
-            <img src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG46.png">
+            <img src="https://ppsh.ru/images/cart.png">
         </div>
         <div id="searchList" #div style="height: 0px">
             <div class="divSearch" *ngFor="let elem of newArr" routerLink="/details"
