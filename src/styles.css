@@ -318,11 +318,11 @@ aside input {
 #previous img {
     height: 50px;
     position: fixed;
+    transform: rotate(180deg);
 }
 #next img {
     height: 50px;
     position: fixed;
-    transform: rotate(180deg);
 }
 #next {
     height: 100%;
