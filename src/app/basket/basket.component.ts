@@ -49,9 +49,11 @@ export class BasketComponent implements OnInit {
       check.fullPrice = sum;
       console.log(JSON.stringify(check));
 
+      /*
       this.getBicycles.http.post('https://demo4164358.mockable.io/bicycles',
       JSON.stringify(check))
       .subscribe((i) => i);
+      */
 
       this.add.clear();
     }
