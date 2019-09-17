@@ -20,51 +20,51 @@ export class DetailsComponent implements OnInit {
     brand:''
   };*/
 
-  constructor( private getBicycles : GetBicyclesService, private add : AddToBasketService ) { }
+  constructor( private getBicycles: GetBicyclesService, private add: AddToBasketService ) { }
 
-  arr=[];
+  arr = [];
 
   ngOnInit() {
-    if(this.getBicycles.currentBicycle!=undefined) {
-  
-      for(let key in this.getBicycles.currentBicycle.description) {
-        let obj={name: key, property: this.getBicycles.currentBicycle.description[key]};
+    if (this.getBicycles.currentBicycle != undefined) {
+
+      for (const key in this.getBicycles.currentBicycle.description) {
+        const obj = {name: key, property: this.getBicycles.currentBicycle.description[key]};
         this.arr.push(obj);
       }
     }
   }
 
-  changeBicycle(elem:HTMLElement) {
+  changeBicycle(elem: HTMLElement) {
     let num;
-    if(this.getBicycles.bicycles!=undefined) {
-      this.getBicycles.bicycles.forEach((item, i)=> {
-        if(item.name==this.getBicycles.currentBicycle.name) {
-          num=i;
+    if (this.getBicycles.bicycles != undefined) {
+      this.getBicycles.bicycles.forEach((item, i) => {
+        if (item.name == this.getBicycles.currentBicycle.name) {
+          num = i;
         }
       });
-      if(elem.id=='previous' && num>0) {
-        this.getBicycles.currentBicycle=this.getBicycles.bicycles[num-1];
+      if (elem.id == 'previous' && num > 0) {
+        this.getBicycles.currentBicycle = this.getBicycles.bicycles[num - 1];
       }
-      if(elem.id=='next' && num<this.getBicycles.bicycles.length-1) {
-        this.getBicycles.currentBicycle=this.getBicycles.bicycles[num+1];
+      if (elem.id == 'next' && num < this.getBicycles.bicycles.length - 1) {
+        this.getBicycles.currentBicycle = this.getBicycles.bicycles[num + 1];
       }
-      this.arr=[];
-      for(let key in this.getBicycles.currentBicycle.description) {
-        let obj={name:key, property:this.getBicycles.currentBicycle.description[key]};
+      this.arr = [];
+      for (const key in this.getBicycles.currentBicycle.description) {
+        const obj = {name: key, property: this.getBicycles.currentBicycle.description[key]};
         this.arr.push(obj);
       }
     }
   }
 
   zoom(event, img, bigImg, div) {
-    img.style.left=-(event.clientX-bigImg.getBoundingClientRect().left)*2+
-    div.offsetHeight/2+'px';
+    img.style.left = -(event.clientX - bigImg.getBoundingClientRect().left) * 2 +
+    div.offsetHeight / 2 + 'px';
 
-    img.style.top=-(event.clientY-bigImg.getBoundingClientRect().top)*2+
-    div.offsetHeight/2+'px';
+    img.style.top = -(event.clientY - bigImg.getBoundingClientRect().top) * 2 +
+    div.offsetHeight / 2 + 'px';
 
-    div.style.left=event.clientX-bigImg.getBoundingClientRect().left+div.offsetHeight+'px';
-    div.style.top=event.clientY-bigImg.getBoundingClientRect().top+'px';
+    div.style.left = event.clientX - bigImg.getBoundingClientRect().left + div.offsetHeight + 'px';
+    div.style.top = event.clientY - bigImg.getBoundingClientRect().top + 'px';
 
   }
 }

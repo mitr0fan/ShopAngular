@@ -10,28 +10,28 @@ import { AddToBasketService } from '../add-to-basket.service';
 })
 export class MainComponent implements OnInit {
 
-  arrBicycles:Array<Bicycle>=[];
-  bicycles:Array<Bicycle>;
+  arrBicycles: Array<Bicycle> = [];
+  bicycles: Array<Bicycle>;
 
-  constructor( private getBicycles : GetBicyclesService, private add : AddToBasketService ) { }
+  constructor( private getBicycles: GetBicyclesService, private add: AddToBasketService ) { }
 
   ngOnInit() {
-    if(this.getBicycles.arrBicycles.length==0) {
+    if (this.getBicycles.arrBicycles.length == 0) {
       this.getBicycles.getBicycles();
     }
-    this.arrBicycles=this.getBicycles.arrBicycles;
+    this.arrBicycles = this.getBicycles.arrBicycles;
   }
 
   getArr(arr: Bicycle[]) {
-    this.bicycles=arr;
+    this.bicycles = arr;
   }
 
-  currentBicycle(bicycle:Bicycle) {
-    this.getBicycles.currentBicycle=bicycle;
-    this.getBicycles.bicycles=this.bicycles;
+  currentBicycle(bicycle: Bicycle) {
+    this.getBicycles.currentBicycle = bicycle;
+    this.getBicycles.bicycles = this.bicycles;
   }
 
-  addToBasket(obj:Bicycle) {
+  addToBasket(obj: Bicycle) {
     this.add.addToBasket(obj);
   }
 

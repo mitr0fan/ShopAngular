@@ -7,32 +7,32 @@ import { Bicycle } from '../app/bicycle';
   providedIn: 'root'
 })
 export class GetBicyclesService {
-  url='https://demo4164358.mockable.io/bicycles';
-  constructor(public http : HttpClient) { }
+  constructor(public http: HttpClient) { }
+  url = 'https://demo4164358.mockable.io/bicycles';
 
-  private request() :Observable<any> {
+  public arrBicycles: Bicycle[] = [];
+
+  public previousArr: Bicycle[];
+
+  public currentBicycle: Bicycle;
+
+  public bicycles: Bicycle[];
+
+  private request(): Observable<any> {
     return this.http.get(this.url);
-  }  
-
-  public arrBicycles : Bicycle[] = [];
-
-  public previousArr : Bicycle[];
-
-  public currentBicycle : Bicycle;
-
-  public bicycles : Bicycle[];
+  }
 
   public getBicycles() {
     this.request()
     .subscribe((value) => {
-      for(let key in value) {
+      for (const key in value) {
         this.arrBicycles.push(value[key]);
       }
-      this.arrBicycles.forEach(function(i){
-        i.price=i.price.replace(' ','');
-        i.price=+i.price;
-        i.brand=i.name.split(' ')[0];
-      })
+      this.arrBicycles.forEach(function(i) {
+        i.price = i.price.replace(' ', '');
+        i.price = +i.price;
+        i.brand = i.name.split(' ')[0];
+      });
     });
   }
 }
