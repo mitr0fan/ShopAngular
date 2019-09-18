@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   constructor( private getBicycles: GetBicyclesService, private add: AddToBasketService ) { }
 
   ngOnInit() {
-    if (this.getBicycles.arrBicycles.length == 0) {
+    if (this.getBicycles.arrBicycles.length === 0) {
       this.getBicycles.getBicycles();
     }
     this.arrBicycles = this.getBicycles.arrBicycles;
@@ -34,5 +34,4 @@ export class MainComponent implements OnInit {
   addToBasket(obj: Bicycle) {
     this.add.addToBasket(obj);
   }
-
 }

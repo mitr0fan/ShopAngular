@@ -18,17 +18,17 @@ export class GetBicyclesService {
 
   public bicycles: Bicycle[];
 
-  private request(): Observable<any> {
-    return this.http.get(this.url);
+  private request(url: string): Observable<any> {
+    return this.http.get(url);
   }
 
   public getBicycles() {
-    this.request()
+    this.request(this.url)
     .subscribe((value) => {
       for (const key in value) {
         this.arrBicycles.push(value[key]);
       }
-      this.arrBicycles.forEach(function(i) {
+      this.arrBicycles.forEach((i) => {
         i.price = i.price.replace(' ', '');
         i.price = +i.price;
         i.brand = i.name.split(' ')[0];
