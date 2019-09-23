@@ -1,7 +1,9 @@
 <div id="popup" *ngIf="getBicycles.currentBicycle!=undefined">
     <span id="close" routerLink="">← Назад</span>
     <div id="name">{{getBicycles.currentBicycle.fullName}}</div>
-    <img src="{{getBicycles.currentBicycle.imageSrc}}" #bigImg id="bigImg" (mousemove)="zoom($event, img, bigImg, div)">
+    <img src="{{getBicycles.currentBicycle.imageSrc}}"
+    onerror="this.src='https://forward.bike//bitrix/templates/forward/images/no_photo_medium.png'"
+    #bigImg id="bigImg" (mousemove)="zoom($event, img, bigImg, div)">
     <div id="popupPrice" (click)="add.addToBasket(getBicycles.currentBicycle)" (click)="add.changeAmount()">
         <span id="price">Цена: {{getBicycles.currentBicycle.price}} руб</span>
         <img src="https://img.icons8.com/dotty/420/add-basket.png">
