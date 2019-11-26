@@ -6,10 +6,9 @@ import { AddToBasketService } from '../add-to-basket.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-
   /*bicycle : Bicycle;
   empty={
     fullName:'Выберите велосипед',
@@ -20,15 +19,20 @@ export class DetailsComponent implements OnInit {
     brand:''
   };*/
 
-  constructor( private getBicycles: GetBicyclesService, private add: AddToBasketService ) { }
+  constructor(
+    private getBicycles: GetBicyclesService,
+    private add: AddToBasketService
+  ) {}
 
   arr = [];
 
   ngOnInit() {
     if (this.getBicycles.currentBicycle != undefined) {
-
       for (const key in this.getBicycles.currentBicycle.description) {
-        const obj = {name: key, property: this.getBicycles.currentBicycle.description[key]};
+        const obj = {
+          name: key,
+          property: this.getBicycles.currentBicycle.description[key],
+        };
         this.arr.push(obj);
       }
     }
@@ -50,21 +54,31 @@ export class DetailsComponent implements OnInit {
       }
       this.arr = [];
       for (const key in this.getBicycles.currentBicycle.description) {
-        const obj = {name: key, property: this.getBicycles.currentBicycle.description[key]};
+        const obj = {
+          name: key,
+          property: this.getBicycles.currentBicycle.description[key],
+        };
         this.arr.push(obj);
       }
     }
   }
 
   zoom(event, img, bigImg, div) {
-    img.style.left = -(event.clientX - bigImg.getBoundingClientRect().left) * 2 +
-    div.offsetHeight / 2 + 'px';
+    img.style.left =
+      -(event.clientX - bigImg.getBoundingClientRect().left) * 2 +
+      div.offsetHeight / 2 +
+      'px';
 
-    img.style.top = -(event.clientY - bigImg.getBoundingClientRect().top) * 2 +
-    div.offsetHeight / 2 + 'px';
+    img.style.top =
+      -(event.clientY - bigImg.getBoundingClientRect().top) * 2 +
+      div.offsetHeight / 2 +
+      'px';
 
-    div.style.left = event.clientX - bigImg.getBoundingClientRect().left + div.offsetHeight + 'px';
+    div.style.left =
+      event.clientX -
+      bigImg.getBoundingClientRect().left +
+      div.offsetHeight +
+      'px';
     div.style.top = event.clientY - bigImg.getBoundingClientRect().top + 'px';
-
   }
 }

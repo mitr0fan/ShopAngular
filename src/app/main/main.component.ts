@@ -6,14 +6,16 @@ import { AddToBasketService } from '../add-to-basket.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-
   arrBicycles: Array<Bicycle> = [];
   bicycles: Array<Bicycle>;
 
-  constructor( private getBicycles: GetBicyclesService, private add: AddToBasketService ) { }
+  constructor(
+    private getBicycles: GetBicyclesService,
+    private add: AddToBasketService
+  ) {}
 
   ngOnInit() {
     if (this.getBicycles.arrBicycles.length === 0) {

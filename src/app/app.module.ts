@@ -19,16 +19,16 @@ import { BasketComponent } from './basket/basket.component';
     HeaderComponent,
     AsideComponent,
     DetailsComponent,
-    BasketComponent
+    BasketComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

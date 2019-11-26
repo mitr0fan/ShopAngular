@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Bicycle } from './bicycle';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AddToBasketService {
-
-  constructor() { }
+  constructor() {}
 
   bicycles: Bicycle[] = [];
   hideBasket = true;
@@ -33,7 +32,7 @@ export class AddToBasketService {
     setTimeout(() => {
       const amount = document.querySelectorAll('.amountList');
       for (let i = 0; i < amount.length; i++) {
-        sum += this.bicycles[i].price * (+amount[i].textContent);
+        sum += this.bicycles[i].price * +amount[i].textContent;
       }
       this.price = sum;
     }, 0);

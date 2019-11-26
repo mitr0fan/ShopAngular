@@ -6,17 +6,18 @@ import { GetBicyclesService } from '../get-bicycles.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private add: AddToBasketService, private getBicycles: GetBicyclesService) { }
+  constructor(
+    private add: AddToBasketService,
+    private getBicycles: GetBicyclesService
+  ) {}
 
   arr: Bicycle[] = this.getBicycles.arrBicycles;
   newArr: Bicycle[] = [];
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   show() {
     this.add.hideBasket = !this.add.hideBasket;
@@ -32,14 +33,20 @@ export class HeaderComponent implements OnInit {
     value = value.toLowerCase();
     this.newArr = [];
     if (value.length > 0) {
-      this.newArr = this.arr.filter((i) => {
+      this.newArr = this.arr.filter(i => {
         const str = i.name.slice(0, value.length).toLowerCase();
-        if (str == value) { return true; }
+        if (str == value) {
+          return true;
+        }
       });
-      if (this.newArr.length > 5) { this.newArr.length=5; }
+      if (this.newArr.length > 5) {
+        this.newArr.length = 5;
+      }
     }
     if (this.newArr.length > 0) {
       div.style.height = (50 + 10) * this.newArr.length + 10 + 'px'; // 50 - offsetHeight, 10 - margin + 10 - padding
-    } else { div.style.height = 0 + 'px'; }
+    } else {
+      div.style.height = 0 + 'px';
+    }
   }
 }

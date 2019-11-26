@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { Bicycle } from '../app/bicycle';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetBicyclesService {
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
   url = 'https://demo4164358.mockable.io/bicycles';
 
   public arrBicycles: Bicycle[] = [];
@@ -23,12 +23,11 @@ export class GetBicyclesService {
   }
 
   public getBicycles() {
-    this.request(this.url)
-    .subscribe((value) => {
+    this.request(this.url).subscribe(value => {
       for (const key in value) {
         this.arrBicycles.push(value[key]);
       }
-      this.arrBicycles.forEach((i) => {
+      this.arrBicycles.forEach(i => {
         i.price = i.price.replace(' ', '');
         i.price = +i.price;
         i.brand = i.name.split(' ')[0];

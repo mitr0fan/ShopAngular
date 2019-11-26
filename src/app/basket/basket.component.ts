@@ -6,14 +6,15 @@ import { Bicycle } from '../bicycle';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.css']
+  styleUrls: ['./basket.component.css'],
 })
 export class BasketComponent implements OnInit {
+  constructor(
+    private add: AddToBasketService,
+    private getBicycles: GetBicyclesService
+  ) {}
 
-  constructor( private add: AddToBasketService, private getBicycles: GetBicyclesService ) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   details(obj: Bicycle) {
     this.getBicycles.currentBicycle = obj;
@@ -30,7 +31,7 @@ export class BasketComponent implements OnInit {
   submit() {
     if (this.add.bicycles.length > 0) {
       const check = {
-        fullPrice: 0
+        fullPrice: 0,
       };
       const amount = document.querySelectorAll('.amountList');
       let sum = 0;
@@ -38,7 +39,7 @@ export class BasketComponent implements OnInit {
         const obj = {
           name: '',
           price: 0,
-          amount: 0
+          amount: 0,
         };
         obj.name = this.add.bicycles[i].name;
         obj.price = this.add.bicycles[i].price;
